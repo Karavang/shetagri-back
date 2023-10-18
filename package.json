@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node index.js",
-    "start:dev": "nodemon start"
+    "dev": "nodemon start",
+    "vercel-build":"echo hello"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/Karavang/shetagri-back/issues"
   },
-  "homepage": "https://github.com/Karavang/shetagri-back#readme",
+  "homepage": "https://shetagri-back.vercel.app/",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
