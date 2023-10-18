@@ -28,7 +28,7 @@ const logicBot = bot.on("message", async (message) => {
       }
       console.log(body);
       axios.post(postUrl, body);
-      // Post.create(body);
+      Post.create(body);
       bot.sendMessage(message.from.id, "Пост добавлен");
     }
   } catch (error) {
