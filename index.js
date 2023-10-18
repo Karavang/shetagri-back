@@ -6,9 +6,7 @@ const cors = require("cors");
 const logicBot = require("./logic");
 const router = require("./router");
 require("dotenv").config();
-const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
-app.use(logger(formatsLogger));
 const startServer = async () => {
   await mongoConnect();
   app.listen(PORT, () => {
