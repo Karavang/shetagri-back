@@ -27,7 +27,7 @@ const logicBot = bot.on("message", async (message) => {
         body.pic = imageUrl;
       }
       console.log(body);
-      await axios.post(postUrl, body);
+      axios.post(postUrl, body);
       await Post.create(body);
       bot.sendMessage(message.from.id, "Пост добавлен");
     }
