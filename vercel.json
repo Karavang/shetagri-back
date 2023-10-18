@@ -13,6 +13,8 @@
           "API_KEY_BOT": "6651902411:AAEJX15u-5SmZzHbzTAakqswSfU2lHbv5kc",
           "LINK": "mongodb+srv://Karavang:retro212121@cluster0.3wuvphi.mongodb.net/shetagri?retryWrites=true&w=majority",
           "PORT":"5555"
+    }, "deployment": {
+      "port": 5555
     },
         "devCommand": "nodemon start"
   }
