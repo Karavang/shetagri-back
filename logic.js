@@ -26,8 +26,9 @@ const logicBot = bot.on("message", async (message) => {
         const imageUrl = `https://api.telegram.org/file/bot${TOKEN}/${fileData.file_path}`;
         body.pic = imageUrl;
       }
-
+      console.log(body);
       axios.post(postUrl, body);
+      Post.create(body);
       bot.sendMessage(message.from.id, "Пост добавлен");
     }
   } catch (error) {
