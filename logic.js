@@ -1,5 +1,4 @@
 const TelegramBot = require("node-telegram-bot-api");
-const axios = require("axios");
 const { Post } = require("./forDb");
 require("dotenv").config();
 
@@ -16,34 +15,40 @@ const getMaxPhoto = (photos) => {
   );
 };
 
-const processMessage = async (message) => {
+const processMessage = (message) => {
   if (message) {
-    try {
-      const body = {
-        text: message.text || message.caption,
-      };
+    const body = {
+      text: message.text || message.caption,
+    };
 
-      if (message.photo) {
-        const maxPhoto = getMaxPhoto(message.photo);
-        const fileData = await bot.getFile(maxPhoto.file_id);
-        const imageUrl = `https://api.telegram.org/file/bot${TOKEN}/${fileData.file_path}`;
-        body.pic = imageUrl;
-      }
-
-      await axios.post(postUrl, body);
-      await Post.create(body);
-
-      await bot.sendMessage(message.chat.id, "Пост добавлен");
-    } catch (error) {
-      console.error(error);
-      await bot.sendMessage(
-        message.chat.id,
-        "Произошла ошибка при добавлении поста",
-      );
+    if (message.photo) {
+      const maxPhoto = getMaxPhoto(message.photo);
+      const fileData = bot.getFile(maxPhoto.file_id);
+      const imageUrl = `https://api.telegram.org/file/bot${TOKEN}/${fileData.file_path}`;
+      body.pic = imageUrl;
     }
+
+    return body;
   }
 };
 
-bot.on("message", processMessage);
+bot.on("message", (message) => {
+  const body = processMessage(message);
+  if (body) {
+    axios
+      .post(postUrl, body)
+      .then(() => {
+        Post.create(body);
+        bot.sendMessage(message.chat.id, "Пост добавлен");
+      })
+      .catch((error) => {
+        console.error(error);
+        bot.sendMessage(
+          message.chat.id,
+          "Произошла ошибка при добавлении поста",
+        );
+      });
+  }
+});
 
 module.exports = processMessage;
