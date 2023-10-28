@@ -3,13 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines": {
-    "node": "18.x"
-  },
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon start",
-    "vercel-build": "echo hello"
+    "build": "npm build"
   },
   "repository": {
     "type": "git",
@@ -20,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/Karavang/shetagri-back/issues"
   },
-  "homepage": "https://shetagri-back.vercel.app/",
+  "homepage": "https://shetagri-back.onrender.com/",
   "dependencies": {
     "axios": "^1.5.1",
     "cors": "^2.8.5",
