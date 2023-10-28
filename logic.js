@@ -5,13 +5,12 @@ const axios = require("axios");
 require("dotenv").config();
 
 const TOKEN = process.env.API_KEY_BOT;
-const postUrl = "https://shetagri-back.vercel.app/";
 
 const bot = new TelegramBot(TOKEN, {
   polling: true,
 });
-const postUrl = "http://localhost:5555/";
-const logicBot = bot.on("message", async (message) => {
+
+bot.on("message", async (message) => {
   try {
     if (message) {
       const body = {
@@ -36,5 +35,3 @@ const logicBot = bot.on("message", async (message) => {
     console.log(error);
   }
 });
-
-module.exports = processMessage;
