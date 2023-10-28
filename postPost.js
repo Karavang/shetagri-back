@@ -1,12 +1,11 @@
 const { Post } = require("./forDb");
 const postPost = async (req, res) => {
   try {
-    Post.create(req.body);
-    res.status(200).json(req.body);
+    console.log(req);
+    // await Post.create(req.body);
+    // res.status(200).json(req.body);
   } catch (error) {
-    res
-      .status(400)
-      .json({ message: `Cannot take posts. Code of error:${error}` });
+    res.status(400).json({ message: `Cannot take posts. Code of error:aboba` });
   }
 };
 module.exports = postPost;

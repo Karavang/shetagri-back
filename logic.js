@@ -1,14 +1,14 @@
 const TelegramBot = require("node-telegram-bot-api");
 const { Post } = require("./forDb");
 const postPost = require("./postPost");
-const { default: axios } = require("axios");
+const axios = require("axios");
 require("dotenv").config();
 const TOKEN = process.env.API_KEY_BOT;
 
 const bot = new TelegramBot(TOKEN, {
   polling: true,
 });
-const postUrl = "https://shetagri-back.vercel.app/";
+const postUrl = "http://localhost:5555/";
 const logicBot = bot.on("message", async (message) => {
   try {
     if (message) {
@@ -27,7 +27,6 @@ const logicBot = bot.on("message", async (message) => {
         body.pic = imageUrl;
       }
       console.log(body);
-      axios.post(postUrl, body);
       await Post.create(body);
       bot.sendMessage(message.from.id, "Пост добавлен");
     }
