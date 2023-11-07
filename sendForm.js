@@ -1,14 +1,16 @@
 const sendMail = require("./sendMail");
+const { EMAILFROM } = process.env;
 const sendForm = async (req, res) => {
   const { body } = req;
 
   const verifyEmail = {
-    to: "osz77263@zslsz.com",
+    from: EMAILFROM,
+    to: "k4r4v4ng@gmail.com",
     subject: "Новый клиент оставил в модалке свои данные!",
-    html: ` 
-    Имя: ${body.name}<br/>
-    Номер телефона: ${body.phone}<br/>
-    Email: ${body.email}<br/>
+    text: ` 
+    Имя: ${body.name}
+    Номер телефона: ${body.phone}
+    Email: ${body.email}
     Сообщение: ${body.message}
     `,
   };
