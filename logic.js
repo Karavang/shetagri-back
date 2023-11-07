@@ -28,7 +28,7 @@ bot.on("message", async (message) => {
         body.pic = imageUrl;
       }
       console.log(body);
-      await Post.create(body);
+      await postPost(body);
       bot.sendMessage(message.from.id, "Пост добавлен");
     }
   } catch (error) {
