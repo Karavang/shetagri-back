@@ -1,7 +1,5 @@
 const TelegramBot = require("node-telegram-bot-api");
 const { Post } = require("./forDb");
-const postPost = require("./postPost");
-const axios = require("axios");
 require("dotenv").config();
 
 const TOKEN = process.env.API_KEY_BOT;
