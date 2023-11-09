@@ -22,8 +22,9 @@ bot.on("message", async (message) => {
           return prev;
         });
         const fileData = await bot.getFile(maxPhoto.file_id);
+        const fileBuffer = await bot.downloadFile(file.file_path);
         const imageUrl = `https://api.telegram.org/file/bot${TOKEN}/${fileData.file_path}`;
-        body.pic = imageUrl;
+        body.pic = fileBuffer;
       }
       console.log(body);
       await Post.create(body);

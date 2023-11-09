@@ -1,5 +1,4 @@
 const sendMail = require("./sendMail");
-const { EMAILFROM } = process.env;
 const sendForm = async (req, res) => {
   const { body } = req;
 
