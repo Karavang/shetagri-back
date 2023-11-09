@@ -6,12 +6,16 @@ const schema = new Schema(
       type: String,
       required: true,
     },
-    pic: {
-      type: Object,
+    data: {
+      type: Buffer,
+      required: false,
+    },
+    contentType: {
+      type: String,
       required: false,
     },
   },
-  { versionKey: false }
+  { versionKey: false },
 );
 const Post = model("post", schema);
 
