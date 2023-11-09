@@ -44,7 +44,6 @@ bot.on("message", async (message) => {
 
         const imageUrl = `https://api.telegram.org/file/bot${TOKEN}/${fileData.file_path}`;
 
-        body.pic = await downloadAndSaveImage(imageUrl);
         console.log(body);
         await Post.create(body);
         bot.sendMessage(message.from.id, "Пост добавлен");
