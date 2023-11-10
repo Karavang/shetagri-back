@@ -14,6 +14,10 @@ const schema = new Schema(
       type: String,
       required: false,
     },
+    pic: {
+      type: String,
+      required: false,
+    },
   },
   { versionKey: false },
 );
