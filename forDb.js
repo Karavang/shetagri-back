@@ -1,6 +1,6 @@
 const { Schema, model, connect } = require("mongoose");
 const fromEnv = process.env;
-const schema = new Schema(
+const schemaPost = new Schema(
   {
     text: {
       type: String,
@@ -8,7 +8,7 @@ const schema = new Schema(
     },
     data: {
       type: Buffer,
-      required: false,
+      required: true,
     },
     contentType: {
       type: String,
@@ -21,7 +21,22 @@ const schema = new Schema(
   },
   { versionKey: false },
 );
-const Post = model("post", schema);
+
+const schemaFeed = new Schema(
+  {
+    data: {
+      type: Buffer,
+      required: true,
+    },
+    contentType: {
+      type: String,
+      required: false,
+    },
+  },
+  { versionKey: false },
+);
+const Post = model("post", schemaPost);
+const Feed = model("feed", schemaFeed);
 
 const mongoConnect = async () => {
   try {
@@ -32,4 +47,4 @@ const mongoConnect = async () => {
   }
 };
 
-module.exports = { Post, mongoConnect };
+module.exports = { Post, Feed, mongoConnect };
