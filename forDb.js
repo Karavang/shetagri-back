@@ -2,6 +2,10 @@ const { Schema, model, connect } = require("mongoose");
 const fromEnv = process.env;
 const schemaPost = new Schema(
   {
+    title: {
+      type: String,
+      required: true,
+    },
     text: {
       type: String,
       required: true,
