@@ -2,7 +2,9 @@ const { Post } = require("./forDb");
 const getPosts = async (req, res) => {
   try {
     const posts = await Post.find();
-    res.status(200).json(posts);
+
+    const revertedPosts = posts.reverse();
+    res.status(200).json(revertedPosts);
   } catch (error) {
     res
       .status(400)
