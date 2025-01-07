@@ -13,7 +13,10 @@ const startServer = async () => {
     console.log("Server woke up");
   });
 };
-app.use(cors());
+const corsOpt = {
+  origin: ["http://localhost:5555", "https://shetagri.com"],
+};
+app.use(cors(corsOpt));
 app.use(express.json());
 app.use("/", router);
 app.use((req, res) => {
