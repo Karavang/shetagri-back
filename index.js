@@ -14,7 +14,7 @@ const startServer = async () => {
   });
 };
 const corsOpt = {
-  origin: ["http://localhost:5555", "https://shetagri.com"],
+  origin: ["http://localhost:5173", "https://shetagri.com"],
 };
 app.use(cors(corsOpt));
 app.use(express.json());
